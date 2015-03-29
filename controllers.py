@@ -122,14 +122,14 @@ class Controller(object):
             pass    # 其他时候的状态忽略掉
 
     def __pop_number(self):
-        if self.__status == 0:
+        if self.__status.value == 0:
             self.__user.pop_mobile()
             print self.__user.str_mobile
-        elif self.__status == 1:
+        elif self.__status.value == 1:
             self.__user.pop_passwd()
             print self.__user.str_passwd
         else:
-            pass
+            self.__logger.warn("The status is invalid, status=%d" % self.__status.value)
 
     def __on_outinput(self):
         """
